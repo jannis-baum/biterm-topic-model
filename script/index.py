@@ -27,7 +27,7 @@ def index(filename_vocab, create_new, filename_in, filename_out):
         vocab = __index_new(file_in, file_out)
         with open(filename_vocab, 'w') as vocab_fp:
             vocab_fp.write('\n'.join([
-                f'{id}\t{token}' for token, id in sorted(vocab.items(), key=lambda v: v[1])
+                f'{id}\t{token}' for token, id in sorted(vocab.items(), key=lambda v: int(v[1]))
             ]))
         
     else:
