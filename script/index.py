@@ -36,6 +36,9 @@ def index(filename_vocab, create_new, filename_in, filename_out):
                 line.strip().split('\t')[::-1]
             for line in vocab_fp])
         __index_existing(vocab, file_in, file_out)
+    
+    file_in.close()
+    file_out.close()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
