@@ -31,7 +31,7 @@ def output_topics(model, num_words=10, out=None):
 
     topics = __topics(vocab, pz, pwz_path, num_words)
 
-    fileout = open(out) if out else sys.stdout
+    fileout = open(out, 'w') if out else sys.stdout
     fileout.write('topic\tprob_topic\ttop_words\n')
     fileout.write('\n'.join([
         f'{i}\t{topic[0]}\t{", ".join(topic[1])}'
