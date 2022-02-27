@@ -2,6 +2,7 @@
 
 import os, argparse, subprocess
 from script.index import index
+from script.topics import output_topics
 
 BTM_EXE = os.path.join(os.path.dirname(os.path.realpath(__file__)), '.build', 'btm')
 
@@ -24,15 +25,23 @@ if __name__ == '__main__':
     vocab_path = os.path.join(model_dir, 'vocab.txt')
     docIDs_path = os.path.join(model_dir, 'docs_ids.txt')
 
+    print('INDEXING ...', end='')
     index(vocab_path, True, args.documents, docIDs_path)
+    print(' done')
 
     vector_dir = os.path.join(model_dir, 'vectors')
     os.makedirs(vector_dir, exist_ok=True)
 
+    print('TRAINING ...')
     with open(vocab_path, 'r') as vocab_fp: vocab_size = len(vocab_fp.readlines())
     subprocess.call([str(arg) for arg in [
         BTM_EXE, 'est', args.k, vocab_size, args.alpha, args.beta, args.n_it, args.save_steps, docIDs_path, vector_dir + '/'
     ]])
+    print('done')
 
     os.remove(docIDs_path)
+
+    print('WRITING TOPIC CSV ...', end='')
+    output_topics(model_dir, out=os.path.join(model_dir, 'topics.csv'))
+    print(' done')
 
