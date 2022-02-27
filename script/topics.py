@@ -20,7 +20,7 @@ def __topics(vocab, pz, pwz_filepath, n_words):
             ])
         for i, line in enumerate(pwz_fp.readlines())]
 
-def output_topics(model, num_words, out=None):
+def output_topics(model, num_words=10, out=None):
     vector_dir = os.path.join(model, 'vectors')
     vector_paths = [os.path.join(vector_dir, f) for f in os.listdir(vector_dir)]
     pz_path = next(p for p in vector_paths if p.endswith('pz'))
