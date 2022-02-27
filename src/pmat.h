@@ -31,7 +31,7 @@ using namespace std;
 template <class T>
 class Pmat {
   private:
-    vector<Pvec<T>> array;
+    vector<Pvec<T> > array;
 
   public:
     Pmat() {}
@@ -55,7 +55,7 @@ class Pmat {
     }
 
     template <class T2>
-    Pmat(const vector<vector<T2>> &ma) {
+    Pmat(const vector<vector<T2> > &ma) {
         array.resize(ma.size());
         for (int r = 0; r < ma.size(); ++r) {
             array[r].resize(ma[r].size());
@@ -137,7 +137,7 @@ class Pmat {
     const Pvec<T> &operator[](int m) const { return array[m]; }
 
     template <class T2>
-    Pmat<T> &operator=(const vector<vector<T2>> &ma) {
+    Pmat<T> &operator=(const vector<vector<T2> > &ma) {
         array.resize(ma.size());
         for (int i = 0; i < array.size(); ++i) {
             array[i].resize(ma[i].size());

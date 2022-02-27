@@ -45,13 +45,13 @@ int main(int argc, char *argv[]) {
         string docs_pt(argv[i++]);
         string dir(argv[i++]);
 
-        cout << "Run BTM, K=" << K << ", W=" << W << ", alpha=" << alpha << ", beta=" << beta << ", n_iter=" << n_iter << ", save_step=" << save_step << " ====" << endl;
+        // cout << "Run BTM, K=" << K << ", W=" << W << ", alpha=" << alpha << ", beta=" << beta << ", n_iter=" << n_iter << ", save_step=" << save_step << " ====" << endl;
         // load training data from file
         clock_t start = clock();
         Model model(K, W, alpha, beta, n_iter, save_step);
         model.run(docs_pt, dir);
         clock_t end = clock();
-        printf("cost %fs\n", double(end - start) / CLOCKS_PER_SEC);
+        // printf("cost %fs\n", double(end - start) / CLOCKS_PER_SEC);
     } else if (strcmp(argv[1], "inf") == 0) {
         string type(argv[2]);
         int K = atoi(argv[3]); // topic num
