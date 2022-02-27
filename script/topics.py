@@ -20,7 +20,7 @@ def __topics(vocab, pz, pwz_filepath, n_words):
             ])
         for i, line in enumerate(pwz_fp.readlines())]
 
-def find_topics(model, num_words, out=None):
+def output_topics(model, num_words, out=None):
     vector_dir = os.path.join(model, 'vectors')
     vector_paths = [os.path.join(vector_dir, f) for f in os.listdir(vector_dir)]
     pz_path = next(p for p in vector_paths if p.endswith('pz'))
@@ -44,5 +44,5 @@ if __name__ == '__main__':
     parser.add_argument('-n', '--num-words', dest='num_words', type=int, default=10, help='number of top words; default 10')
     args = parser.parse_args()
 
-    find_topics(args.model, args.num_words, args.filename_out)
+    output_topics(args.model, args.num_words, args.filename_out)
 
