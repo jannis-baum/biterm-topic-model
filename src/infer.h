@@ -14,6 +14,7 @@ class Infer {
   private:
     int K;
     string type; // infer type
+    bool verbose; // info printing from original code base
 
     string dfile;      // inference docs
     Pvec<double> pz;   // p(z) = theta
@@ -31,9 +32,10 @@ class Infer {
     void compute_pz_dw(int w, const Pvec<double> &pz_d, Pvec<double> &p);
 
   public:
-    Infer(string type, int K) : type(type), K(K) {}
+    Infer(string type, int K, bool verbose = true) : type(type), K(K), verbose(verbose) {}
 
     void run(string docs_pt, string model_dir);
+    void run_dynamic(string model_dir);
 };
 
 #endif

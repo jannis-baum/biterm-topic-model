@@ -28,16 +28,28 @@ void Infer::run(string docs_pt, string model_dir) {
     }
 }
 
+void Infer::run_dynamic(string model_dir) {
+    load_para(model_dir);
+
+    string line;
+    while (getline(std::cin, line)) {
+        Doc doc(line);
+        Pvec<double> pz_d(K);
+        doc_infer(doc, pz_d);
+        std::cout << pz_d.str() << endl;
+    }
+}
+
 void Infer::load_para(string model_dir) {
     string pt = model_dir + "k" + str_util::itos(K) + ".pz";
-    cout << "load p(z):" << pt << endl;
+    if (verbose) cout << "load p(z):" << pt << endl;
     pz.loadFile(pt);
     assert(abs(pz.sum() - 1) < 1e-4);
 
     string pt2 = model_dir + "k" + str_util::itos(K) + ".pw_z";
-    cout << "load p(w|z):" << pt2 << endl;
+    if (verbose) cout << "load p(w|z):" << pt2 << endl;
     pw_z.load(pt2);
-    printf("n(z)=%d, n(w)=%d\n", pw_z.rows(), pw_z.cols());
+    if (verbose) printf("n(z)=%d, n(w)=%d\n", pw_z.rows(), pw_z.cols());
     assert(pw_z.rows() > 0 && abs(pw_z[0].sum() - 1) < 1e-4);
 }
 

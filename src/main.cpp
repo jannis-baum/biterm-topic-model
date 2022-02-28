@@ -24,11 +24,15 @@ void usage() {
          << "btm inf <K> <docs_pt> <model_dir>" << endl
          << "\tK  int, number of topics, like 20" << endl
          << "\tdocs_pt     string, path of training docs" << endl
+         << "\tmodel_dir  string, output directory" << endl
+         << "Dynamic Inference Usage (stdin/out):" << endl
+         << "btm inf-d <K> <model_dir>" << endl
+         << "\tK  int, number of topics, like 20" << endl
          << "\tmodel_dir  string, output directory" << endl;
 }
 
 int main(int argc, char *argv[]) {
-    if (argc < 4) {
+    if (argc < 3) {
         usage();
         return 1;
     }
@@ -60,6 +64,12 @@ int main(int argc, char *argv[]) {
         cout << "Run inference:K=" << K << ", type " << type << " ====" << endl;
         Infer inf(type, K);
         inf.run(docs_pt, dir);
+    } else if (strcmp(argv[1], "inf-d") == 0) {
+        string type(argv[2]);
+        int K = atoi(argv[3]);
+        string dir(argv[4]);
+        Infer inf(type, K, false);
+        inf.run_dynamic(dir);
     } else {
         cout << "Wrong common:" << argv[0] << " " << argv[1] << endl;
     }
