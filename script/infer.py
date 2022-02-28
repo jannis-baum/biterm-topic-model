@@ -20,6 +20,7 @@ class BTMInferrer:
         self.__inferrer.communicate()
         
     def infer(self, document):
+        assert('\n' not in document)
         self.__indexer.stdin.write(bytes(document.strip() + '\n', 'utf-8'))
         self.__indexer.stdin.flush()
         self.__inferrer.stdin.write(self.__indexer.stdout.readline())
