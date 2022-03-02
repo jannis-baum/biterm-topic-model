@@ -27,7 +27,7 @@ Run `make` in the repository's root.
 
 ### Topic learning
 
-Run `./train DOCUMENTS MODEL` in the repository's root where `DOCUMENTS` is a file with one document (consisting of space separated tokens) per line and `MODEL` is the directory to create the model in.
+Run `script/train.py DOCUMENTS MODEL` in the repository's root where `DOCUMENTS` is a file with one document (consisting of space separated tokens) per line and `MODEL` is the directory to create the model in.
 
 Training parameters can be set as follows:
 
