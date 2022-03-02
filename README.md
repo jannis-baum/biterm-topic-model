@@ -54,4 +54,5 @@ Here, an instance `i` of `BTMInferrer` can initialized with the model's director
 - existing `Makefile` was revised for efficiency and to separate build from source
 - existing scripts were recreated to increase efficiency, adaptability and ease of use
 - existing `C++` code was formatted by [LLVM Coding Standards](https://llvm.org/docs/CodingStandards.html) and dynamic inferral (through `stdin/out`) was added while making minimal changes and retaining all previous functionality
+- the original project's [sample data](https://github.com/xiaohuiyan/BTM/blob/master/sample-data/doc_info.txt) has been removed to decrease the repository's size (once GitHub prunes expired refs)
 
