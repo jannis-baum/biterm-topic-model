@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 
-import os, argparse, subprocess
+import os, sys, argparse, subprocess
+
+PATH = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(PATH)
+
 from script.index import index
 from script.topics import output_topics
 
-BTM_EXE = os.path.join(os.path.dirname(os.path.realpath(__file__)), '.build', 'btm')
+BTM_EXE = os.path.join(PATH, '.build', 'btm')
 
 def train(documents, model, k, alpha, beta, n_it, save_steps):
     model_dir = model
