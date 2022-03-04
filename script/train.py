@@ -5,8 +5,8 @@ import os, sys, argparse, subprocess
 PATH = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(PATH)
 
-from script.index import index
-from script.topics import output_topics
+from index import index
+from topics import output_topics
 
 BTM_EXE = os.path.join(PATH, '.build', 'btm')
 
