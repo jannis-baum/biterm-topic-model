@@ -8,7 +8,7 @@ sys.path.append(PATH)
 from index import index
 from topics import output_topics
 
-BTM_EXE = os.path.join(PATH, '.build', 'btm')
+BTM_EXE = os.path.join(PATH,'..', '.build', 'btm')
 
 def train(documents, model, k, alpha, beta, n_it, save_steps):
     model_dir = model
