@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import os, sys, argparse, subprocess
+import os, shutil, sys, argparse, subprocess
 
 PATH = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(PATH)
@@ -12,7 +12,8 @@ BTM_EXE = os.path.join(PATH,'..', '.build', 'btm')
 
 def train(documents, model, k, alpha, beta, n_it, save_steps):
     model_dir = model
-    os.makedirs(model_dir, exist_ok=True)
+    shutil.rmtree(model_dir, ignore_errors=True)
+    os.makedirs(model_dir)
     vocab_path = os.path.join(model_dir, 'vocab.txt')
     docIDs_path = os.path.join(model_dir, 'docs_ids.txt')
 
