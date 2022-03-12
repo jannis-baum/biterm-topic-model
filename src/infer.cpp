@@ -6,17 +6,14 @@
 #include "infer.h"
 #include "str_util.h"
 
-void Infer::run(string docs_pt, string model_dir) {
+void Infer::run(string docs_pt, string output, string model_dir) {
     load_para(model_dir);
 
-    cout << "Infer p(z|d) for docs in: " << docs_pt << endl;
     ifstream rf(docs_pt.c_str());
     assert(rf);
 
-    string pt = model_dir + "k" + str_util::itos(K) + ".pz_d";
-    ofstream wf(pt.c_str());
+    ofstream wf(output.c_str());
     assert(wf);
-    cout << "write p(z|d): " << pt << endl;
 
     string line;
     while (getline(rf, line)) {

@@ -34,7 +34,7 @@ class Infer {
   public:
     Infer(string type, int K, bool verbose = true) : type(type), K(K), verbose(verbose) {}
 
-    void run(string docs_pt, string model_dir);
+    void run(string docs_pt, string output, string model_dir);
     void run_dynamic(string model_dir);
 };
 
