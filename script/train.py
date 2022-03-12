@@ -31,8 +31,6 @@ def train(documents, model, k, alpha, beta, n_it, save_steps):
     ]])
     print('done')
 
-    os.remove(docIDs_path)
-
     print('WRITING TOPIC CSV ...', end='')
     output_topics(model_dir, out=os.path.join(model_dir, 'topics.csv'))
     print(' done')
