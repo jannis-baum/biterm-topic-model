@@ -34,6 +34,8 @@ def train(documents, model, k, alpha, beta, n_it, save_steps):
     print('WRITING TOPIC CSV ...', end='')
     output_topics(model_dir, out=os.path.join(model_dir, 'topics.csv'))
     print(' done')
+
+    return docIDs_path
     
 
 if __name__ == '__main__':
